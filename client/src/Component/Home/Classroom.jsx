@@ -1,5 +1,9 @@
+import  { useState } from 'react';
 import styled from 'styled-components';
+
+// Assume classroom image is imported
 import classroom from "../../assets/classroom.png";
+import classroomVideo from "../../assets/classroom.mp4";
 
 const Container = styled.div`
   display: flex;
@@ -166,7 +170,35 @@ const PlayButton = styled.div`
   }
 `;
 
+const VideoOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const Video = styled.video`
+  max-width: 90%;
+  max-height: 90%;
+`;
+
 const Classroom = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
+
+  const handleVideoEnd = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <Container>
       <ContentSection>
@@ -182,8 +214,21 @@ const Classroom = () => {
         <Image src={classroom} alt="Classroom" />
         <GreenCircle />
         <BlueShape />
-        <PlayButton />
+        <PlayButton onClick={handlePlayClick} />
       </ImageSection>
+      {isPlaying && (
+        <VideoOverlay onClick={() => setIsPlaying(false)}>
+          <Video 
+            autoPlay 
+            controls 
+            onEnded={handleVideoEnd}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <source src={classroomVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </Video>
+        </VideoOverlay>
+      )}
     </Container>
   );
 };

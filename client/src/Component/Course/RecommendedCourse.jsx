@@ -253,6 +253,17 @@ const RecommendedCourse = () => {
       originalPrice: 100,
       discountedPrice: 80
     },
+    {
+      image: card4,
+      category: 'Design',
+      duration: '3 Month',
+      title: 'AWS Certified Solutions Architect',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipising elit, sed do eiusmod tempor',
+      instructor: 'Lina',
+      avatar: avatarImage,
+      originalPrice: 100,
+      discountedPrice: 80
+    },
   ];
 
   return (

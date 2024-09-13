@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { CiUser } from "react-icons/ci";
@@ -85,7 +85,7 @@ const IconContainer = styled.div`
 const TextField = styled.input`
   width: 100%;
   padding: 0.5rem;
-  padding-left: ${props => props.hasIcon ? '2rem' : '0.5rem'};
+  padding-left: ${(props) => (props.hasIcon ? "2rem" : "0.5rem")};
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -202,7 +202,6 @@ const Contact = () => {
 
   return (
     <Container>
-      <Toaster />
       <Title>Contact Us</Title>
       <GridContainer>
         <GridItem>
@@ -279,14 +278,9 @@ const Contact = () => {
           </Paper>
         </GridItem>
       </GridContainer>
+      <Toaster position="top-right" reverseOrder={false} />
     </Container>
   );
 };
 
 export default Contact;
-
-
-
-
-
-

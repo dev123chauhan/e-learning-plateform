@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import {Link} from "react-router-dom"
-import axios from 'axios';
-import { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { LoadingOutlined } from '@ant-design/icons';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { LoadingOutlined } from "@ant-design/icons";
 
-import { Spin } from 'antd';
+import { Spin } from "antd";
 const FooterContainer = styled.footer`
   background-color: #1e1e2f;
   color: #ffffff;
@@ -73,12 +73,12 @@ const SubscribeButton = styled.button`
 
 const Links = styled.div`
   margin-bottom: 20px;
-  
+
   a {
     color: #ffffff;
     text-decoration: none;
     margin: 0 10px;
-    
+
     &:hover {
       text-decoration: underline;
     }
@@ -91,49 +91,69 @@ const Copyright = styled.p`
 `;
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:8000/api/subscribe', { email });
-      toast.success('Subscription successful!');
-      setEmail('');
+      await axios.post("http://localhost:8000/api/subscribe", { email });
+      toast.success("Subscription successful!");
+      setEmail("");
     } catch (error) {
-      console.error('Subscription failed:', error);
-      toast.error('Subscription failed. Please try again.');
-    }finally {
+      console.error("Subscription failed:", error);
+      toast.error("Subscription failed. Please try again.");
+    } finally {
       setIsLoading(false);
     }
   };
   return (
     <FooterContainer>
-    <Toaster/>
       <Logo>
         <LogoText>
-          <LogoDiamond>TOTC</LogoDiamond>
+          <LogoDiamond>LEARN</LogoDiamond>
         </LogoText>
         <SubTitle>Virtual Class for Zoom</SubTitle>
       </Logo>
-      
+
       <SubscribeText>Subscribe to get our Newsletter</SubscribeText>
-      
+
       <SubscribeForm onSubmit={handleSubmit}>
-        <EmailInput type="email"
+        <EmailInput
+          type="email"
           placeholder="Your Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)} />
-        <SubscribeButton type="submit"> {isLoading ?  <Spin indicator={<LoadingOutlined style={{ color: '#ffffff', marginLeft: "20px", marginRight:"20px" }} spin  />}  /> : 'Subscribe'}</SubscribeButton>
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <SubscribeButton type="submit">
+          {" "}
+          {isLoading ? (
+            <Spin
+              indicator={
+                <LoadingOutlined
+                  style={{
+                    color: "#ffffff",
+                    marginLeft: "20px",
+                    marginRight: "20px",
+                  }}
+                  spin
+                />
+              }
+            />
+          ) : (
+            "Subscribe"
+          )}
+        </SubscribeButton>
       </SubscribeForm>
-      
+
       <Links>
         <Link to="/contact">Contact us</Link>
         <Link to="">Privacy Policy</Link>
         <Link to="">Terms & Conditions</Link>
       </Links>
-      
-      <Copyright>© 2021 Class Technologies Inc.</Copyright>
+
+      <Copyright>© All rights reserved designed by | Devesh Chauhan</Copyright>
+      <Toaster position="top-right" reverseOrder={false} />
     </FooterContainer>
   );
 };

@@ -39,7 +39,7 @@ const LeftSection = styled.div`
 `;
 
 const RightSection = styled.div`
-  flex: 1;
+  flex: 1.5;
 `;
 
 const Header = styled.div`
@@ -141,6 +141,7 @@ const ControlBar = styled.div`
   position: absolute;
   bottom: 10px;
   left: 50%;
+  gap: 1rem;
   transform: translateX(-50%);
   width: 90%;
 
