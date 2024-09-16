@@ -196,7 +196,7 @@ const Contact = () => {
     } catch (err) {
       console.error(err);
       setLoading(false);
-      toast.error("Message sending failed. Please try again.");
+      toast.error("Failed. Please try again.");
     }
   };
 

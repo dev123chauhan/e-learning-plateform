@@ -1,9 +1,9 @@
-import  { useState } from 'react';
+import  { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 // Assume classroom image is imported
 import classroom from "../../assets/classroom.png";
-import classroomVideo from "../../assets/classroom.mp4";
+import classroomVideo from "../../assets/classroomVideo.mp4";
 
 const Container = styled.div`
   display: flex;
@@ -171,25 +171,29 @@ const PlayButton = styled.div`
 `;
 
 const VideoOverlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
 `;
 
 const Video = styled.video`
-  max-width: 90%;
-  max-height: 90%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 `;
 
 const Classroom = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const imageSectionRef = useRef(null);
 
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -198,6 +202,18 @@ const Classroom = () => {
   const handleVideoEnd = () => {
     setIsPlaying(false);
   };
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsPlaying(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isPlaying && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [isPlaying]);
 
   return (
     <Container>
@@ -210,25 +226,26 @@ const Classroom = () => {
         </Description>
         <LearnMoreButton href="#">Learn more</LearnMoreButton>
       </ContentSection>
-      <ImageSection>
+      <ImageSection ref={imageSectionRef}>
         <Image src={classroom} alt="Classroom" />
         <GreenCircle />
         <BlueShape />
         <PlayButton onClick={handlePlayClick} />
+        {isPlaying && (
+          <VideoOverlay onClick={handleOverlayClick}>
+            <Video 
+              ref={videoRef}
+              autoPlay 
+              controls 
+              onEnded={handleVideoEnd}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <source src={classroomVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </Video>
+          </VideoOverlay>
+        )}
       </ImageSection>
-      {isPlaying && (
-        <VideoOverlay onClick={() => setIsPlaying(false)}>
-          <Video 
-            autoPlay 
-            controls 
-            onEnded={handleVideoEnd}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <source src={classroomVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </Video>
-        </VideoOverlay>
-      )}
     </Container>
   );
 };
