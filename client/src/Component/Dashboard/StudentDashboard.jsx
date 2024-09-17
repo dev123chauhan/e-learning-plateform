@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
-import noProfile from "../../assets/noProfile.jpg";
+
 import {
   FiGrid,
   FiFileText,
@@ -20,6 +20,7 @@ import CourseReport from "./CourseReport";
 import PeerReview from "./PeerReview";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import SidebarTodo from "./SidebarTodo";
 // import Performance from './Performace';
 
 const AppContainer = styled.div`
@@ -130,26 +131,26 @@ const LeaderBoard = styled.div`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
-const ProfileSidebar = styled.div`
-  width: 300px;
-  padding: 20px;
-  background-color: white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-`;
+// const ProfileSidebar = styled.div`
+//   width: 300px;
+//   padding: 20px;
+//   background-color: white;
+//   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+// `;
 
-const ProfilePic = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
+// const ProfilePic = styled.img`
+//   width: 100px;
+//   height: 100px;
+//   border-radius: 50%;
+//   object-fit: cover;
+//   margin-bottom: 10px;
 
-`;
-const stylePic ={
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center"
-}
+// `;
+// const stylePic ={
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center"
+// }
 const styleBack ={
   display: "flex",
   alignItems:"center",
@@ -157,18 +158,18 @@ const styleBack ={
   color: "#49BBBD",
   marginBottom:"2rem"
 }
-const TodoList = styled.div`
-  margin-top: 20px;
-`;
+// const TodoList = styled.div`
+//   margin-top: 20px;
+// `;
 
-const TodoItem = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  input[type="checkbox"] {
-    margin-right: 10px;
-  }
-`;
+// const TodoItem = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 10px;
+//   input[type="checkbox"] {
+//     margin-right: 10px;
+//   }
+// `;
 function cropText(text, maxLength) {
   if (text?.length <= maxLength) {
     return text;
@@ -275,7 +276,7 @@ function StudentDashboard() {
           {/* Add table component here */}
         </LeaderBoard></>}
       </MainContent>
-      <ProfileSidebar>
+      {/* <ProfileSidebar>
       <div style={stylePic}>
         <ProfilePic  src={
             user?.profileImage
@@ -289,7 +290,7 @@ function StudentDashboard() {
         <div style={stylePic}>
         <p>{user?.email}</p>
         </div>
-        {/* Add calendar component here */}
+       
         <TodoList>
           <h3>To Do List</h3>
           <TodoItem>
@@ -315,7 +316,8 @@ function StudentDashboard() {
          
          
         </TodoList>
-      </ProfileSidebar>
+      </ProfileSidebar> */}
+      <SidebarTodo/>
     </AppContainer>
   );
 }
