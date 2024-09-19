@@ -84,20 +84,39 @@ const SearchWrapper = styled.div`
 `;
 
 const Search = () => {
+  // const [searchTerm, setSearchTerm] = useState('');
+  // const [subjectFilter, setSubjectFilter] = useState('');
+
+  // const handleSearchChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
+
+  // const handleSubjectSelect = (subject) => {
+  //   setSubjectFilter(subject);
+  // };
   const [searchTerm, setSearchTerm] = useState('');
-  const [subjectFilter, setSubjectFilter] = useState('');
+  const [filters, setFilters] = useState({
+    subject: '',
+    program: '',
+    language: '',
+    availability: '',
+    learningType: ''
+  });
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSubjectSelect = (subject) => {
-    setSubjectFilter(subject);
+  const handleFilterSelect = (filterType, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [filterType]: value
+    }));
   };
 
   return (
     <>
-      <SearchContainer>
+      {/* <SearchContainer>
         <SearchWrapper>
           <SearchInput
             value={searchTerm}
@@ -119,7 +138,47 @@ const Search = () => {
           <DropdownButton label="Learning Type" options={['Self-paced', 'Instructor-led']} />
         </FilterContainer>
       </SearchContainer>
-      <CourseCards searchTerm={searchTerm} subjectFilter={subjectFilter} />
+      <CourseCards searchTerm={searchTerm} subjectFilter={subjectFilter} /> */}
+      <SearchContainer>
+        <SearchWrapper>
+          <SearchInput
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Search your favourite course"
+          />
+          <SearchButton>Search</SearchButton>
+        </SearchWrapper>
+
+        <FilterContainer>
+          <DropdownButton
+            label="Subject"
+            options={['All', 'Development', 'Programming', 'Design']}
+            onSelect={(value) => handleFilterSelect('subject', value)}
+          />
+          <DropdownButton 
+            label="Program" 
+            options={['Program 1', 'Program 2', 'Program 3']} 
+            onSelect={(value) => handleFilterSelect('program', value)}
+          />
+          <DropdownButton 
+            label="Language" 
+            options={['English', 'Spanish', 'French']} 
+            onSelect={(value) => handleFilterSelect('language', value)}
+          />
+          <DropdownButton 
+            label="Availability" 
+            options={['Available', 'Not Available']} 
+            onSelect={(value) => handleFilterSelect('availability', value)}
+          />
+          <DropdownButton 
+            label="Learning Type" 
+            options={['Self-paced', 'Instructor-led']} 
+            onSelect={(value) => handleFilterSelect('learningType', value)}
+          />
+        </FilterContainer>
+      </SearchContainer>
+      <CourseCards searchTerm={searchTerm} filters={filters} />
+
     </>
   );
 };

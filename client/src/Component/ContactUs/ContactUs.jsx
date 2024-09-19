@@ -85,7 +85,7 @@ const IconContainer = styled.div`
 const TextField = styled.input`
   width: 100%;
   padding: 0.5rem;
-  padding-left: ${(props) => (props.hasIcon ? "2rem" : "0.5rem")};
+  padding-left: ${(props) => (props.$hasIcon ? "2rem" : "0.5rem")};
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -222,7 +222,7 @@ const Contact = () => {
                   onChange={handleChange}
                   onFocus={() => setIsNameFocused(true)}
                   onBlur={() => setIsNameFocused(false)}
-                  hasIcon={isNameFocused}
+                 $hasIcon={isNameFocused}
                 />
               </InputWrapper>
               <InputWrapper>
@@ -239,7 +239,7 @@ const Contact = () => {
                   onChange={handleChange}
                   onFocus={() => setIsEmailFocused(true)}
                   onBlur={() => setIsEmailFocused(false)}
-                  hasIcon={isEmailFocused}
+                  $hasIcon={isEmailFocused}
                 />
               </InputWrapper>
               <TextArea

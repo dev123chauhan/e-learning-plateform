@@ -204,6 +204,7 @@ const InfoCard = styled.div`
 const AssistedStudentCard = styled(InfoCard)`
   top: 40%;
   left: 50%;
+  opacity: 0.7;
 `;
 
 const UserExperienceCard = styled(InfoCard)`
@@ -212,11 +213,13 @@ const UserExperienceCard = styled(InfoCard)`
   flex-direction: column;
   align-items: flex-start;
   z-index: 1000;
+  opacity: 0.7;
 `;
 
 const CongratulationsCard = styled(InfoCard)`
   top: 40%;
   right: 5%;
+  opacity: 0.7;
 `;
 
 const JoinNowButton = styled.button`

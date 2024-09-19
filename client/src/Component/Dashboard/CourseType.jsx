@@ -8,7 +8,7 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: ${props => props.bgColor};
+  background-color: ${props => props.$bgColor};
   border-radius: 12px;
   padding: 20px;
   width: 200px;
@@ -55,7 +55,7 @@ const CourseType = () => {
   return (
     <CardContainer>
       {courses.map((course, index) => (
-        <Card key={index} bgColor={course.bgColor}>
+        <Card key={index} $bgColor={course.bgColor}>
           <IconWrapper>
             <course.icon size={24} color="#000" />
           </IconWrapper>

@@ -58,7 +58,7 @@ const SidebarItem = styled.div`
     ${"" /* background-color: #f0f0f0; */}
   }
   ${(props) =>
-    props.active &&
+    props.$active &&
     `
     background-color: #49BBBD;
     color: white;
@@ -192,39 +192,39 @@ function StudentDashboard() {
       <Sidebar>
         <Logo>E-learning</Logo>
         <SidebarItem
-          active={activeTab === "Overview"}
+          $active={activeTab === "Overview"}
           onClick={() => setActiveTab("Overview")}
         >
           <FiGrid /> Overview
         </SidebarItem>
         <SidebarItem
-          active={activeTab === "Assignment"}
+          $active={activeTab === "Assignment"}
           onClick={() => setActiveTab("Assignment")}
         >
           <FiFileText /> Assignment
         </SidebarItem>
         <SidebarItem
-          active={activeTab === "Reports"}
+          $active={activeTab === "Reports"}
           onClick={() => setActiveTab("Reports")}
         >
           <FiClock /> Reports
         </SidebarItem>
    
         <SidebarItem
-          active={activeTab === "My Course"}
+          $active={activeTab === "My Course"}
           onClick={() => setActiveTab("My Course")}
         >
            <SlBookOpen /> My Course
         </SidebarItem>
  
         <SidebarItem
-          active={activeTab === "Quiz"}
+          $active={activeTab === "Quiz"}
           onClick={() => setActiveTab("Quiz")}
         >
           <MdOutlineQuiz /> Quiz
         </SidebarItem>
         <SidebarItem
-          active={activeTab === "Review"}
+          $active={activeTab === "Review"}
           onClick={() => setActiveTab("Review")}
         >
           <FiSettings /> Reviews
