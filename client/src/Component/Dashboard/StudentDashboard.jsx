@@ -21,6 +21,8 @@ import PeerReview from "./PeerReview";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import SidebarTodo from "./SidebarTodo";
+import Leaderboard from "./Leadership";
+import CourseType from "./CourseType";
 // import Performance from './Performace';
 
 const AppContainer = styled.div`
@@ -96,19 +98,19 @@ const ProfileSection = styled.div`
   gap: 10px;
 `;
 
-const CourseCards = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-`;
+// const CourseCards = styled.div`
+//   display: flex;
+//   gap: 20px;
+//   margin-bottom: 20px;
+// `;
 
-const Card = styled.div`
-  background-color: ${(props) => props.color};
-  padding: 20px;
-  border-radius: 10px;
-  width: 200px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-`;
+// const Card = styled.div`
+//   background-color: ${(props) => props.color};
+//   padding: 20px;
+//   border-radius: 10px;
+//   width: 200px;
+//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+// `;
 
 const StatsContainer = styled.div`
   display: flex;
@@ -255,11 +257,12 @@ function StudentDashboard() {
             <span>Profile</span>
           </ProfileSection>
         </Header>
-        <CourseCards>
+        {/* <CourseCards>
           <Card color="#e6e6fa">Basic: HTML and CSS</Card>
           <Card color="#fff0f5">Branding Design</Card>
           <Card color="#f0fff0">Motion Design</Card>
-        </CourseCards>
+        </CourseCards> */}
+        <CourseType/>
         <StatsContainer>
           {/* <Chart> */}
 
@@ -268,12 +271,11 @@ function StudentDashboard() {
           {/* <Chart> */}
 
           {/* <Performance performanceValue={performanceValue} timeOptions={timeOptions} /> */}
-          <Performance />
+          <Performance value={8966}/>
           {/* </Chart> */}
         </StatsContainer>
         <LeaderBoard>
-          <h3>Leader Board</h3>
-          {/* Add table component here */}
+        <Leaderboard/>
         </LeaderBoard></>}
       </MainContent>
       {/* <ProfileSidebar>

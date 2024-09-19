@@ -244,7 +244,7 @@ const CalendarSection = styled.div`
     line-height: 2rem;
   }
   .react-datepicker__day--selected {
-    background-color: #2ecc71;
+    background-color: #49BBBD;
   }
 `;
 

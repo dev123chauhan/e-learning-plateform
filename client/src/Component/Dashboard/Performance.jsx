@@ -1,4 +1,3 @@
-// import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -22,8 +21,8 @@ const Controls = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #20c997;
-  color: white;
+  color: #49BBBD;
+  background: none;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
@@ -61,7 +60,7 @@ const GaugeFill = styled.div`
   height: 100px;
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
-  border: 10px solid #20c997;
+  border: 10px solid #49BBBD;
   border-bottom: 0;
   box-sizing: border-box;
   ${'' /* clip-path: polygon(50% 50%, 0% 0%, 100% 0%); */}
