@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Users, Clock, Star, BookOpen } from 'lucide-react';
 
 const PageContainer = styled.div`
@@ -110,8 +110,8 @@ const CourseReport = () => {
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={performanceData}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            {/* <XAxis dataKey="name" />
+            <YAxis /> */}
             <Tooltip />
             <Legend />
             <Bar dataKey="average" fill="#FF9053" name="Average Score" />

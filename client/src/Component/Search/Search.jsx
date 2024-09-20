@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import CourseCards from '../CourseCards/CourseCards';
 import { useState } from 'react';
 import DropdownButton from "../CourseCards/Dropdown";
+import KnowAboutLearning from './KnowAboutLearning';
 
 const SearchContainer = styled.div`
   background-image: url(${backgroundImage});
@@ -178,6 +179,7 @@ const Search = () => {
         </FilterContainer>
       </SearchContainer>
       <CourseCards searchTerm={searchTerm} filters={filters} />
+      <KnowAboutLearning/>
 
     </>
   );

@@ -385,10 +385,11 @@ import useAuth from "../../hooks/useAuth";
 import noProfile from "../../assets/noProfile.jpg";
 
 const Nav = styled.nav`
+  padding: 20px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  ${'' /* padding: 1rem 2rem; */}
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -541,7 +542,7 @@ const ButtonGroup = styled.div`
 
 const Button = styled(Link)`
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 7px 15px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
@@ -549,6 +550,7 @@ const Button = styled(Link)`
   display: inline-block;
   background-color: #53bfba;
   color: white;
+  font-size: 14px;
 `;
 
 const LogoSideBar = styled.div`

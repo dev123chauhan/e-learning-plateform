@@ -596,9 +596,9 @@ const SidebarNav = styled.nav`
   }
 `;
 
-const UserProfile = styled.div`
-  margin-top: 20px;
-`;
+// const UserProfile = styled.div`
+//   margin-top: 20px;
+// `;
 
 function Header() {
   const { user, logout } = useAuth();
@@ -715,7 +715,7 @@ function Header() {
           </ul>
         </SidebarNav>
         
-        {user && (
+        {/* {user && (
           <UserProfile>
             <DropdownItem onClick={() => { navigate('/profile'); toggleSidebar(); }}>
               <FaUser />
@@ -730,7 +730,7 @@ function Header() {
               Logout
             </DropdownItem>
           </UserProfile>
-        )}
+        )} */}
       </Sidebar>
     </>
   );

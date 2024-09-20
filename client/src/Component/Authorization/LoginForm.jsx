@@ -143,6 +143,7 @@ export default function LoginForm() {
         const response = await axios.post('http://localhost:8000/api/login', { email, password });
         const token = response.data.token;
         login(token);
+        console.log(token)
         toast.success('Successfully logged in!');
         setTimeout(() => {
           navigate('/');
@@ -152,7 +153,7 @@ export default function LoginForm() {
         toast.error('Login failed. Please check your credentials.');
         setLoading(false); // Hide spinner
       }finally{
-        setLoading(false)
+        setLoading(false);
       }
     };
    

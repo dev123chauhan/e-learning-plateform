@@ -9,6 +9,9 @@ import { FiBook } from "react-icons/fi";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown } from "react-icons/md";
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { MdArrowBack } from "react-icons/md";
+
 const PageContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -73,12 +76,12 @@ const AccordionTitle = styled.div`
   padding: 10px 0;
   cursor: pointer;
   font-weight: bold;
-  color: ${props => props.isOpen ? '#49BBBD' : 'inherit'};
+  color: ${props => props.$isOpen ? '#49BBBD' : 'inherit'};
 `;
 
 const AccordionContent = styled.div`
   padding-left: 20px;
-  max-height: ${props => (props.isOpen ? '1000px' : '0')};
+  max-height: ${props => (props.$isOpen ? '1000px' : '0')};
   overflow: hidden;
   transition: max-height 0.3s ease-out;
 `;
@@ -87,8 +90,8 @@ const LessonItem = styled.div`
   display: flex;
   align-items: center;
   padding: 8px 0;
-  color: ${props => props.active ? '#49BBBD' : '#666'};
-  font-weight: ${props => props.active ? 'bold' : 'normal'};
+  color: ${props => props.$active ? '#49BBBD' : '#666'};
+  font-weight: ${props => props.$active ? 'bold' : 'normal'};
   font-size: 14px;
   cursor: pointer;
 `;
@@ -110,11 +113,11 @@ const styleMark ={
 function Accordion({ title, children, index, isOpen, toggleAccordion }) {
   return (
     <AccordionSection>
-      <AccordionTitle isOpen={isOpen} onClick={() => toggleAccordion(index)}>
+      <AccordionTitle $isOpen={isOpen} onClick={() => toggleAccordion(index)}>
         {title}
         <span>{isOpen ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowRight />}</span>
       </AccordionTitle>
-      <AccordionContent isOpen={isOpen}>{children}</AccordionContent>
+      <AccordionContent $isOpen={isOpen}>{children}</AccordionContent>
     </AccordionSection>
   );
 }
@@ -452,7 +455,7 @@ function EnrolledCourse() {
             {section.lessons.map((lesson, lessonIndex) => (
               <LessonItem
                 key={lessonIndex}
-                active={currentSectionIndex === sectionIndex && currentLessonIndex === lessonIndex}
+                $active={currentSectionIndex === sectionIndex && currentLessonIndex === lessonIndex}
                 onClick={() => {
                   setCurrentSectionIndex(sectionIndex);
                   setCurrentLessonIndex(lessonIndex);
@@ -470,7 +473,7 @@ function EnrolledCourse() {
       </Sidebar>
       <MainContent>
         <Header>
-          <div>{currentVideo.title}</div>
+          <Link to="/"><MdArrowBack /></Link>
           <div>
             <NavButton onClick={handlePrev} disabled={currentSectionIndex === 0 && currentLessonIndex === 0}>
               Prev
@@ -483,6 +486,8 @@ function EnrolledCourse() {
             </NavButton>
           </div>
         </Header>
+        <div>{currentVideo.title}</div>
+
         <VideoContainer>
           <CourseTitle>Html Css & Javascript</CourseTitle>
           <Instructor>BUILD AND DEPLOY AN E-COMMERCE APP</Instructor>
