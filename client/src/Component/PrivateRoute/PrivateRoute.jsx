@@ -1,10 +1,10 @@
 import { Navigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext'; // Correct path to AuthContext
+import { AuthContext } from '../../context/AuthContext'; 
 import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ element: Component }) => {
-  const { user } = useContext(AuthContext); // Assume user indicates the user's login status
+  const { user } = useContext(AuthContext); 
 
   return user ? <Component /> : <Navigate to="/" />;
 };

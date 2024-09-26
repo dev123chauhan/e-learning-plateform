@@ -1,8 +1,3 @@
-
-
-
-
-
 import { useState } from 'react';
 import styled from 'styled-components';
 import authImage from "../../assets/authImage.jpg";
@@ -33,7 +28,7 @@ const ImageContainer = styled.div`
 
   @media (min-width: 768px) and (max-width: 1200px) {
     flex: 1;
-    height: 50vh; /* Adjust height as needed */
+    height: 50vh;
   }
 
   @media (min-width: 1201px) {
@@ -61,7 +56,7 @@ const FormContainer = styled.div`
   @media (min-width: 768px) and (max-width: 1200px) {
     flex: 1;
     padding: 40px;
-    height: 50vh; /* Adjust height as needed */
+    height: 50vh; 
   }
 
   @media (min-width: 1201px) {
@@ -113,8 +108,7 @@ const AuthForm = () => {
     <Container>
       <ImageContainer>
         <TextOverlay>
-          {/* <h2>Unlock Your Learning Potential</h2>
-          <p>Explore courses, develop new skills, and achieve your goals with our E-learning platform.</p> */}
+    
         </TextOverlay>
       </ImageContainer>
       <FormContainer>

@@ -37,28 +37,10 @@ const Button = styled.button`
   font-size: 16px;
   margin-bottom: 10px;
 
-  ${'' /* &:hover {
-    background-color: #53BFBA;
-  } */}
+  
 `;
 
-// const ForgotPassword = styled.a`
-//   text-align: right;
-//   color: #53BFBA;
-//   text-decoration: none;
-//   font-size: 14px;
-// `;
 
-// const Checkbox = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 15px;
-//   justify-content: space-between;
-
-//   input {
-//     margin-right: 10px;
-//   }
-// `;
 
 const CheckboxContainer = styled.div`
   display: flex;
@@ -132,13 +114,13 @@ export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false); // State to manage loading spinner
+    const [loading, setLoading] = useState(false); 
     const navigate = useNavigate();
     const { login } = useAuth();
   
     const handleLogin = async (event) => {
       event.preventDefault();
-      setLoading(true); // Show spinner
+      setLoading(true); 
       try {
         const response = await axios.post('http://localhost:8000/api/login', { email, password });
         const token = response.data.token;
@@ -148,10 +130,10 @@ export default function LoginForm() {
         setTimeout(() => {
           navigate('/');
         }, 2000);
-        setLoading(false); // Hide spinner
+        setLoading(false); 
       } catch (error) {
         toast.error('Login failed. Please check your credentials.');
-        setLoading(false); // Hide spinner
+        setLoading(false); 
       }finally{
         setLoading(false);
       }

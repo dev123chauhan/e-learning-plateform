@@ -11,7 +11,7 @@ function authMiddleware(req, res, next) {
     req.user = decoded;
     next();
   } catch (error) {
-    console.error('Token verification error:', error.message);
+    // console.error('Token verification error:', error.message);
     return res.status(400).json({ msg: 'Token is not valid' });
   }
 }

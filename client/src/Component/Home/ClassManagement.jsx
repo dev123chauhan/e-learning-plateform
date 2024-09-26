@@ -9,7 +9,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  font-family: Arial, sans-serif;
 
   @media (min-width: 768px) {
     flex-direction: row;

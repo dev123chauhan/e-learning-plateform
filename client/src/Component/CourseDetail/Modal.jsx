@@ -107,8 +107,7 @@ function Modal({ isOpen, onClose, courseId, onEnrollmentSuccess  }) {
       if (response.data.success) {
         setMessage('Enrollment successful!'); 
         toast.success('Enrollment successful!')
-        onEnrollmentSuccess(); // Call this function on successful enrollment
-        // Optionally, clear the form or close the modal after a delay
+        onEnrollmentSuccess(); 
         setTimeout(() => {
           onClose();
         }, 2000);

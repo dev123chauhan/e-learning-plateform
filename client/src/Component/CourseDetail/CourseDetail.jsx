@@ -1,14 +1,10 @@
-// import courseDetailImage from "../../assets/courseDetailImg.png"
 import styled from 'styled-components';
-// import PropTypes from 'prop-types';
 import Rating from "./Rating";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from './Modal';
-// import { FaCheck } from 'react-icons/fa'; 
 const Container = styled.div`
-  ${'' /* max-width: 1200px; */}
   margin: 0 auto;
 `;
 
@@ -159,14 +155,12 @@ function CourseDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEnrolled, setIsEnrolled] = useState(false);
 
-  // const handleEnrollmentSuccess = () => {
-  //   setIsEnrolled(true);
-  // };
+ 
 
 
   const handleEnrollmentSuccess = () => {
     setIsEnrolled(true);
-    // localStorage.setItem(`isEnrolled_${id}`, true);
+    localStorage.setItem(`isEnrolled_${id}`, true);
   };
 
 
@@ -182,10 +176,10 @@ function CourseDetail() {
     };
 
     fetchCourseDetails();
-    // const enrolled = localStorage.getItem(`isEnrolled_${id}`);
-    // if (enrolled) {
-    //   setIsEnrolled(true);
-    // }
+    const enrolled = localStorage.getItem(`isEnrolled_${id}`);
+    if (enrolled) {
+      setIsEnrolled(true);
+    }
   }, [id]);
 
 

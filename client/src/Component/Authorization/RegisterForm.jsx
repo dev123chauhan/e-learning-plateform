@@ -91,7 +91,6 @@ export default function RegisterForm() {
       <InputLabel>Email Address</InputLabel>
       <Input type="email"   name="email"  value={formData.email} onChange={handleChange} placeholder="Enter your Email Address" />
       <InputLabel>Password</InputLabel>
-      {/* <Input type="password"    name="password"  value={formData.password} onChange={handleChange} placeholder="Enter your Password" /> */}
       <InputWrapper>
           <Input
             type={showPassword ? "text" : "password"}

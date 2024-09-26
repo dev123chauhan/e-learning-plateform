@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import bannerImage from "../../assets/bannerImage.png"
 import PropTypes from 'prop-types';
@@ -8,38 +7,9 @@ import mailIcon from "../../assets/email.png"
 import baseImageSrc from "../../assets/mailBox.png"
 import statsIcon from "../../assets/state.png"
 import { TypeAnimation } from 'react-type-animation';
-// const HeroContainer = styled.section`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   color: white;
-//   background-color: #49BBBD;
-//   min-height: 100vh;
-//   position: relative;
-//   overflow: hidden;
-//   padding: 20px;
-
-//   @media (min-width: 1024px) {
-//     flex-direction: row;
-//     padding: 50px 5%;
-//   }
-// `;
-
-// const ContentArea = styled.div`
-//   flex: 1;
-//   width: 100%;
-//   text-align: center;
-//   z-index: 2;
-
-//   @media (min-width: 1024px) {
-//     width: 50%;
-//     text-align: left;
-//   }
-// `;
-
 const HeroContainer = styled.section`
   display: flex;
-  flex-direction: column; /* Image first in mobile view */
+  flex-direction: column; 
   align-items: center;
   color: white;
   background-color: #49BBBD;
@@ -49,7 +19,7 @@ const HeroContainer = styled.section`
   padding: 20px;
 
   @media (min-width: 1024px) {
-    flex-direction: row; /* Content left, image right in desktop view */
+    flex-direction: row; 
     padding: 50px 5%;
   }
 `;
@@ -59,10 +29,10 @@ const ContentArea = styled.div`
   width: 100%;
   text-align: center;
   z-index: 2;
-  order: 2; /* Content after image in mobile view */
+  order: 2; 
 
   @media (min-width: 1024px) {
-    order: 1; /* Content first in desktop view */
+    order: 1; 
     width: 50%;
     text-align: left;
   }
@@ -72,11 +42,11 @@ const ImageArea = styled.div`
   flex: 1;
   width: 100%;
   position: relative;
-  margin-bottom: 30px; /* Add margin-bottom for spacing in mobile view */
-  order: 1; /* Image first in mobile view */
+  margin-bottom: 30px; 
+  order: 1; 
 
   @media (min-width: 1024px) {
-    order: 2; /* Image second in desktop view */
+    order: 2; 
     width: 50%;
     margin-bottom: 0;
   }
@@ -156,17 +126,7 @@ const WatchButton = styled(Button)`
   }
 `;
 
-// const ImageArea = styled.div`
-//   flex: 1;
-//   width: 100%;
-//   position: relative;
-//   margin-top: 30px;
 
-//   @media (min-width: 1024px) {
-//     width: 50%;
-//     margin-top: 0;
-//   }
-// `;
 
 const StudentImage = styled.img`
   width: 100%;
@@ -286,9 +246,6 @@ const Title = styled.h1`
   }
 `;
 
-
-
-
 function Banner() {
   return (
     <HeroContainer>
@@ -307,8 +264,6 @@ function Banner() {
         repeat={Infinity}
       />
     </Title>
-
-
         <Subtitle>TOTC is an interesting platform that will teach you in more an interactive way</Subtitle>
         <CTAGroup>
           <JoinButton>Join for free</JoinButton>

@@ -1,7 +1,5 @@
 import  { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-
-// Assume classroom image is imported
 import classroom from "../../assets/classroom.png";
 import classroomVideo from "../../assets/classroomVideo.mp4";
 

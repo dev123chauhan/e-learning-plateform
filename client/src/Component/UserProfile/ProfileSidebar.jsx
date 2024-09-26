@@ -93,7 +93,7 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
 
   const handleLogout = () => {
     logout();
-    navigate("/") // Call the logout function from useAuth
+    navigate("/") 
   };
 
 
@@ -109,17 +109,7 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
         />
         <Username>{user?.username || "User Name"}</Username>
       </ProfileSection>
-      {/* <NavList>
-        {["profile", "update", "picture", "password"].map((tab) => (
-          <NavItem
-            key={tab}
-            selected={activeTab === tab}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)} {tab === "profile" ? "User Profile" : tab === "update" ? "Update Profile" : tab === "picture" ? "Upload Picture" : "Change Password"}
-          </NavItem>
-        ))}
-      </NavList> */}
+    
       <NavList>
   {["profile", "update", "picture", "password"].map((tab) => (
     <NavItem

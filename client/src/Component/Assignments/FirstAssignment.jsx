@@ -6,8 +6,7 @@ const FirstAssignment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // This is where you'd typically send the code to a backend for evaluation
-    // For this example, we'll just check if the code includes certain keywords
+  
     if (code.includes('<html>') && code.includes('<body>') && code.includes('</html>')) {
       setFeedback({ type: 'success', message: 'Great job! Your HTML structure looks correct.' });
     } else {

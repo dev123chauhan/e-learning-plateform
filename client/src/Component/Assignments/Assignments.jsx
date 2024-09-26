@@ -1,16 +1,7 @@
 import { Table } from 'antd';
 import FirstAssignment from './FirstAssignment';
 import { useState } from 'react';
-// const AssignmentItem = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 10px;
-//   margin-bottom: 10px;
-//   background-color: #f0f0f0;
-//   border-radius: 5px;
-//   margin-top: 10px;
-// `;
+
 
 const Assignment = () => {
   const [selectedAssignment, setSelectedAssignment] = useState(null);
@@ -55,12 +46,12 @@ const Assignment = () => {
 
   const handleRowClick = (record) => {
     if (record.id === 1) {
-      setSelectedAssignment(record.id); // Set the state to the clicked assignment's id
+      setSelectedAssignment(record.id); 
     }
   };
 
   if (selectedAssignment === 1) {
-    return <FirstAssignment />; // Render the new component when the first assignment is clicked
+    return <FirstAssignment />; 
   }
 
 
