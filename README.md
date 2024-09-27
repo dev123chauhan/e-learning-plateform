@@ -25,7 +25,3 @@ This e-learning platform allows users to access a wide range of courses across v
 - **MongoDB**: You need a MongoDB instance running, either locally or via a cloud service like MongoDB Atlas.
 - **Git**: Git is required to clone the repository.
 
-### Installation Steps
-
-1. **Clone the repository**:
-   ```bash
