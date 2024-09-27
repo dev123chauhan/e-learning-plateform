@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import useAuth from "../../hooks/useAuth";
-import { FaRegEyeSlash, FaRegEye  } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-const Form = styled.form` 
+import { FaRegEyeSlash, FaRegEye  } from "react-icons/fa";const Form = styled.form` 
   display: flex;
   flex-direction: column;
 `;
@@ -102,14 +100,7 @@ const ShowPasswordIcon = styled.div`
   color: #53BFBA;
   font-size: 1.4rem;
 `;
-const GoogleButton = styled(Button)`
-  background-color: white;
-  display: flex;
-  align-items: center;
-  gap:10px;
-  color: black;
-  margin: auto;
-`;
+
 export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
@@ -174,10 +165,7 @@ export default function LoginForm() {
     </CheckboxContainer>
     <Button type="submit">{loading ? <ClipLoader size={20} color={"#fff"} /> : "Login"}  </Button>
   
-            <GoogleButton>
-           <FcGoogle size={30}/>
-           Login with Google
-            </GoogleButton>
+            
           
      
   </Form>
