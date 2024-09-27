@@ -29,4 +29,3 @@ This e-learning platform allows users to access a wide range of courses across v
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/e-learning-platform.git
