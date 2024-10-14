@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import VideoPlayerEnrolledCourse from './VideoPlayer';
 import video1 from "../../assets/Introduction to Web Development __ Setup __ Part 1.mp4"
@@ -7,22 +7,33 @@ import video3 from "../../assets/html css 3.mp4"
 import video4 from "../../assets/html css 4.mp4"
 import { FiBook } from "react-icons/fi";
 import { FaCheckCircle } from "react-icons/fa";
-import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown, MdArrowBack } from "react-icons/md";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { MdArrowBack } from "react-icons/md";
 
 const PageContainer = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100vh;
   font-family: Arial, sans-serif;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const Sidebar = styled.div`
-  width: 300px;
+  width: 100%;
   background-color: white;
   padding: 20px;
   overflow-y: auto;
+  max-height: 300px;
+
+  @media (min-width: 768px) {
+    width: 300px;
+    max-height: none;
+    height: 100vh;
+  }
 `;
 
 const MainContent = styled.div`
@@ -33,19 +44,29 @@ const MainContent = styled.div`
 
 const Header = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const NavButton = styled.button`
   padding: 8px 16px;
-  margin-left: 10px;
+  margin: 5px 0;
   background-color: #BFD3FE;
   color: #1D58D8;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    margin-left: 10px;
+  }
 `;
 
 const VideoContainer = styled.div`
@@ -56,13 +77,21 @@ const VideoContainer = styled.div`
 `;
 
 const CourseTitle = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 const Instructor = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const AccordionSection = styled.div`
@@ -106,10 +135,22 @@ const SidebarTitle = styled.h2`
   font-size: 18px;
   margin-bottom: 20px;
 `;
-const styleMark ={
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+  }
+`;
+
+const styleMark = {
   backgroundColor: "#CEFFEC",
   color: "#0ACF83"
-}
+};
+
 function Accordion({ title, children, index, isOpen, toggleAccordion }) {
   return (
     <AccordionSection>
@@ -131,8 +172,7 @@ Accordion.propTypes = {
 };
 
 function EnrolledCourse() {
-
-  const courseStructure = [
+   const courseStructure = [
     {
       title: "Getting Started with Web Development",
       lessons: [
@@ -381,7 +421,7 @@ function EnrolledCourse() {
       <MainContent>
         <Header>
           <Link to="/"><MdArrowBack /></Link>
-          <div>
+          <ButtonContainer>
             <NavButton onClick={handlePrev} disabled={currentSectionIndex === 0 && currentLessonIndex === 0}>
               Prev
             </NavButton>
@@ -391,7 +431,7 @@ function EnrolledCourse() {
             <NavButton style={styleMark} onClick={markAsComplete} disabled={completedLessons.includes(`${currentSectionIndex}-${currentLessonIndex}`)}>
               {completedLessons.includes(`${currentSectionIndex}-${currentLessonIndex}`) ? "Completed" : "Mark as Complete"}
             </NavButton>
-          </div>
+          </ButtonContainer>
         </Header>
         <div>{currentVideo.title}</div>
 

@@ -5,10 +5,9 @@ import {
   FiGrid,
   FiFileText,
   FiClock,
-  FiSettings,
   FiBell,
 } from "react-icons/fi";
-import { MdOutlineQuiz } from "react-icons/md";
+import { MdOutlineQuiz, MdOutlineReviews } from "react-icons/md";
 import { useState } from "react";
 import StatisticsSection from "./StatisticsSection";
 import Performance from "./Performance";
@@ -174,7 +173,7 @@ function StudentDashboard() {
           $active={activeTab === "Review"}
           onClick={() => setActiveTab("Review")}
         >
-          <FiSettings /> Reviews
+          <MdOutlineReviews /> Reviews
         </SidebarItem>
       </Sidebar>
       <MainContent>

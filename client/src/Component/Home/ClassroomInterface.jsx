@@ -6,13 +6,15 @@ import person4 from "../../assets/person4.png";
 import person5 from "../../assets/person5.png";
 
 const Container = styled.div`   
-  padding: 20px;
+  padding: 40px;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  @media(min-width: 768px) {
+  position: relative; 
+  max-width: 1200px;
+  margin: 0 auto;
+  @media(min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -20,12 +22,13 @@ const Container = styled.div`
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   width: 100%;
-  @media(min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    width: 60%;
+  @media(min-width: 1024px) {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 65%;
   }
 `;
 
@@ -33,13 +36,13 @@ const UserCard = styled.div`
   background-color: white;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
 `;
 
 const UserImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 `;
 
@@ -48,9 +51,10 @@ const UserInfo = styled.div`
   bottom: 10px;
   left: 10px;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   align-items: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 `;
 
 const UserStatus = styled.div`
@@ -62,20 +66,20 @@ const UserStatus = styled.div`
 `;
 
 const InstructorCard = styled(UserCard)`
-  grid-column: span 1;
-  grid-row: span 1;
-  @media(min-width: 768px) {
-    grid-column: span 2;
-    grid-row: span 2;
+  grid-column: span 2;
+  grid-row: span 2;
+  @media(min-width: 1024px) {
+    grid-column: 1;
+    grid-row: 1 / 3;
   }
 `;
 
 const InstructorLabel = styled.div`
-  background-color: #2196F3;
+  background-color: #4285f4;
   color: white;
   padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 10px;
+  border-radius: 12px;
+  font-size: 12px;
   margin-right: 5px;
 `;
 
@@ -94,6 +98,9 @@ const Button = styled.button`
   color: white;
   font-weight: bold;
   cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
 `;
 
 const PresentButton = styled(Button)`
@@ -106,24 +113,20 @@ const CallButton = styled(Button)`
 
 const InfoContainer = styled.div`
   width: 100%;
-  margin-top: 20px;
-  @media(min-width: 768px) {
-    width: 35%;
+  margin-top: 30px;
+  @media(min-width: 1024px) {
+    width: 30%;
     margin-top: 0;
   }
 `;
 
 const Title = styled.h2`
-  color: #3f51b5;
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: bold;
   span {
-    color: #00bcd4;
-  }
-  @media(min-width: 768px) {
-    font-size: 28px;
-    text-align: left;
+    color: #00C9A7;
   }
 `;
 
@@ -138,30 +141,30 @@ const InfoIcon = styled.div`
   height: 24px;
   background-color: ${props => props.color};
   margin-right: 15px;
-  border-radius: 4px;
+  border-radius: 6px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
 `;
 
 const InfoText = styled.p`
   color: #555;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
-  text-align: center;
-  @media(min-width: 768px) {
-    font-size: 16px;
-    text-align: left;
-  }
 `;
 
-const BackgroundShapes = styled.div`
+const BackgroundCircle = styled.div`
   position: absolute;
   top: -50px;
-  left: -50px;
-  width: 100px;
-  height: 100px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  background-color: #00bcd4;
-  opacity: 0.2;
+  background-color: #E8F5E9;
+  z-index: -1;
 `;
 
 const SmallCircle = styled.div`
@@ -177,7 +180,7 @@ const SmallCircle = styled.div`
 const ClassroomInterface = () => {
   return (
     <Container>
-      <BackgroundShapes />
+      <BackgroundCircle />
       <SmallCircle />
       <GridContainer>
         <InstructorCard>
@@ -185,7 +188,7 @@ const ClassroomInterface = () => {
           <UserInfo>
             <InstructorLabel>Instructor</InstructorLabel>
             <UserStatus />
-            Emmy Howard
+            Eveny Howard
           </UserInfo>
           <ButtonContainer>
             <PresentButton>Present</PresentButton>
@@ -194,7 +197,7 @@ const ClassroomInterface = () => {
         </InstructorCard>
         <UserCard>
           <UserImage src={person2} alt="User 1" />
-          <UserInfo><UserStatus />Tamara Clarke</UserInfo>
+          <UserInfo><UserStatus />Tamara</UserInfo>
         </UserCard>
         <UserCard>
           <UserImage src={person3} alt="User 2" />
@@ -202,7 +205,7 @@ const ClassroomInterface = () => {
         </UserCard>
         <UserCard>
           <UserImage src={person4} alt="User 3" />
-          <UserInfo><UserStatus />Hanson Holland</UserInfo>
+          <UserInfo><UserStatus />Harrison</UserInfo>
         </UserCard>
         <UserCard>
           <UserImage src={person5} alt="User 4" />
@@ -210,17 +213,17 @@ const ClassroomInterface = () => {
         </UserCard>
       </GridContainer>
       <InfoContainer>
-        <Title>A <span>user interface</span> designed for the classroom</Title>
+        <Title>A <span>user interface</span> designed<br />for the classroom</Title>
         <InfoItem>
-          <InfoIcon color="#4285f4" />
+          <InfoIcon color="#4285f4">📊</InfoIcon>
           <InfoText>Teachers dont get lost in the grid view and have a dedicated Podium space.</InfoText>
         </InfoItem>
         <InfoItem>
-          <InfoIcon color="#fbbc05" />
+          <InfoIcon color="#fbbc05">🔀</InfoIcon>
           <InfoText>TAs and presenters can be moved to the front of the class.</InfoText>
         </InfoItem>
         <InfoItem>
-          <InfoIcon color="#34a853" />
+          <InfoIcon color="#34a853">👥</InfoIcon>
           <InfoText>Teachers can easily see all students and class data at one time.</InfoText>
         </InfoItem>
       </InfoContainer>
