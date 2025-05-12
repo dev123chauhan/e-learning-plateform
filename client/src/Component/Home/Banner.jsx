@@ -16,7 +16,8 @@ const HeroContainer = styled.section`
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px; 
+
 
   @media (min-width: 1024px) {
     flex-direction: row; 
@@ -248,7 +249,7 @@ const Title = styled.h1`
 
 function Banner() {
   return (
-    <HeroContainer>
+    <HeroContainer className='curve'>
       <ContentArea>
       <Title>
       <span>Studying</span> 

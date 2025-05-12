@@ -24,34 +24,4 @@
   module.exports = User;
 
 
-  // models/User.js
-// const mongoose = require('mongoose');
-
-// const UserSchema = new mongoose.Schema({
-//   name: { type: String, required: true },
-//   email: { type: String, required: true, unique: true },
-//   password: { type: String, required: true },
-//   role: { type: String, enum: ['student', 'educator'], required: true },
-//   personalInfo: {
-//     dateOfBirth: Date,
-//     address: String,
-//     phoneNumber: String
-//   },
-//   // For students
-//   enrolledCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
-//   // For educators
-//   coursesTaught: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
-// });
-
-// module.exports = mongoose.model('User', UserSchema);
-
-// // models/Course.js
-// const mongoose = require('mongoose');
-
-// const CourseSchema = new mongoose.Schema({
-//   title: { type: String, required: true },
-//   description: String,
-//   educator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-// });
-
-// module.exports = mongoose.model('Course', CourseSchema);
+ 

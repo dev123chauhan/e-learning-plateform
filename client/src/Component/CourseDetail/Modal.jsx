@@ -2,7 +2,7 @@ import  { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
+import {toast} from 'sonner';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 const zoomIn = keyframes`
@@ -79,6 +79,7 @@ const SubmitButton = styled.button`
 `;
 
 function Modal({ isOpen, onClose, courseId, onEnrollmentSuccess  }) {
+   const API_URL = import.meta.env.VITE_API_URL
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -100,7 +101,7 @@ function Modal({ isOpen, onClose, courseId, onEnrollmentSuccess  }) {
     console.log('Form Data:', formData);
     console.log('Course ID:', courseId);
     try {
-      const response = await axios.post('http://localhost:8000/api/enroll', {
+      const response = await axios.post(`${API_URL}/enroll`, {
         ...formData,
         courseId,
       });
@@ -143,10 +144,7 @@ function Modal({ isOpen, onClose, courseId, onEnrollmentSuccess  }) {
         </Form>
       </ModalContent>
     </ModalOverlay>
-    <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
+   
     </>
   );
 }

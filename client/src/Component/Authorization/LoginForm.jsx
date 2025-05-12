@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from 'styled-components';
-import toast, { Toaster } from 'react-hot-toast';
+import {toast} from 'sonner';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
@@ -102,18 +102,18 @@ const ShowPasswordIcon = styled.div`
 `;
 
 export default function LoginForm() {
+  const API_URL = import.meta.env.VITE_API_URL
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false); 
     const navigate = useNavigate();
     const { login } = useAuth();
-  
     const handleLogin = async (event) => {
       event.preventDefault();
       setLoading(true); 
       try {
-        const response = await axios.post('http://localhost:8000/api/login', { email, password });
+        const response = await axios.post(`${API_URL}/login`, { email, password });
         const token = response.data.token;
         login(token);
         console.log(token)
@@ -121,7 +121,7 @@ export default function LoginForm() {
         setTimeout(() => {
           navigate('/');
         }, 2000);
-        setLoading(false); 
+        // setLoading(false); 
       } catch (error) {
         toast.error('Login failed. Please check your credentials.');
         setLoading(false); 
@@ -169,10 +169,7 @@ export default function LoginForm() {
           
      
   </Form>
-  <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
+  
   </>
   )
 }

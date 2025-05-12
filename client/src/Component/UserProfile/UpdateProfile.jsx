@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import toast, { Toaster } from 'react-hot-toast';
+import {toast} from 'sonner';
 import { ClipLoader } from "react-spinners";
 
 const Container = styled.div`
@@ -72,7 +72,7 @@ const UpdateProfile = () => {
     dateOfBirth: user?.dateOfBirth ? new Date(user.dateOfBirth).toISOString().substr(0, 10) : "",
     address: user?.address || "",
   });
-
+  const API_URL = import.meta.env.VITE_API_URL
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -84,7 +84,7 @@ const UpdateProfile = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/update-profile",
+        `${API_URL}/update-profile`,
         formData,
         { headers: { "x-auth-token": token } }
       );
@@ -129,10 +129,7 @@ const UpdateProfile = () => {
           </Button>
         </Grid>
       </Form>
-      <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
+    
     </Container>
   );
 };

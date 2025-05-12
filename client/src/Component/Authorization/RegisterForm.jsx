@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import toast, { Toaster } from 'react-hot-toast';
+import {toast} from 'sonner';
 import axios from "axios"
 import { ClipLoader } from "react-spinners";
 import { FaRegEyeSlash, FaRegEye  } from "react-icons/fa";
@@ -55,7 +55,7 @@ export default function RegisterForm() {
      const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [loading, setLoading] = useState(false);
-
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -66,7 +66,7 @@ export default function RegisterForm() {
     setLoading(true);
     const { name, email, password } = formData;
     try {
-      await axios.post("http://localhost:8000/api/register", {
+      await axios.post(`${API_URL}/register`, {
         username: name,
         email,
         password,
@@ -75,6 +75,7 @@ export default function RegisterForm() {
       setTimeout(() => {
         setLoading(false);
       }, 1200);
+  
     } catch (error) {
       toast.error("Registration failed");
       console.error("Error registering user:", error);
@@ -105,10 +106,7 @@ export default function RegisterForm() {
         </InputWrapper>
       <Button type="submit">{loading ? <ClipLoader size={20} color={"#fff"} /> : "Register"}  </Button>
     </Form>
-    <Toaster
-  position="top-right"
-  reverseOrder={false}
-/>
+  
     </>
   )
 }

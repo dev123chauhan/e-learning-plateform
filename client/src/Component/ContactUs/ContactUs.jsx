@@ -168,7 +168,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
+  const API_URL = import.meta.env.VITE_API_URL
   const { name, email, message } = formData;
 
   const handleChange = (e) => {
@@ -180,7 +180,7 @@ const Contact = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/contact",
+        `${API_URL}/contact`,
         formData
       );
       console.log(res.data);

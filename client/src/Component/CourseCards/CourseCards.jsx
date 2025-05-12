@@ -159,12 +159,12 @@ const CourseCards = ({ searchTerm, subjectFilter }) => {
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
   const navigate = useNavigate();
-
+  const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:8000/api/courses`);
+        const response = await axios.get(`${API_URL}/courses`);
         let filteredCourses = response.data;
 
         if (searchTerm) {

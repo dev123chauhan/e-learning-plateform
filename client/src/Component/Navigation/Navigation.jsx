@@ -5,9 +5,10 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { FaUser, FaSignOutAlt, FaBars, FaTimes } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import noProfile from "../../assets/noProfile.jpg";
+import { Bell } from "lucide-react";
 
 const Nav = styled.nav`
-  padding: 20px 30px;
+  padding: 20px 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,8 +59,8 @@ const MenuIcon = styled.div`
 const Sidebar = styled.div`
   position: fixed;
   top: 0;
-  left: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
-  width: 250px;
+  left: ${({ $isOpen }) => ($isOpen ? '0' : '-1530px')};
+  width: 100%;
   height: 100vh;
   background-color: #fff;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
@@ -227,6 +228,8 @@ const Navigation = () => {
       </NavLinks>
 
       {user ? (
+        <div style={{display:"flex", alignItems:"center", gap:"1rem"}}>
+          <Bell size={35}/>
         <ProfileContainer ref={dropdownRef}>
           <ProfileImage
             onClick={toggleDropdown}
@@ -253,6 +256,8 @@ const Navigation = () => {
             </DropdownItem>
           </Dropdown>
         </ProfileContainer>
+        </div>
+       
       ) : (
         <ButtonGroup>
           <Button to="/auth">Login</Button>

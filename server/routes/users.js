@@ -6,6 +6,9 @@ const authMiddleware = require('../middleware/auth');
 const router = express.Router();
 const path = require('path');
 const upload = require('../middleware/upload');
+const dotenv = require("dotenv");
+
+dotenv.config();
 // Registration Route
 router.post('/register', async (req, res) => {
   try {
@@ -103,27 +106,7 @@ router.post('/update-profile', authMiddleware, async (req, res) => {
     res.status(400).json({ success: false, message: err.message });
   }
 });
-// Get user profile
-// router.get('/:userId', async (req, res) => {
-//   try {
-//     const user = await User.findById(req.params.userId)
-//       .populate('enrolledCourses')
-//       .populate('coursesTaught');
-//     res.json(user);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// });
 
-// Update user profile
-// router.patch('/:userId', async (req, res) => {
-//   try {
-//     const updatedUser = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true });
-//     res.json(updatedUser);
-//   } catch (err) {
-//     res.status(400).json({ message: err.message });
-//   }
-// });
 
 
 module.exports = router;

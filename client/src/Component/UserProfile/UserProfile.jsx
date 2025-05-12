@@ -34,7 +34,7 @@ const GridItem = styled.div`
 
 const InfoPaper = styled.div`
   padding: 16px;
-  display: flex;
+  display: flex; 
   align-items: center;
   justify-content: space-between;
   background-color: #fff;

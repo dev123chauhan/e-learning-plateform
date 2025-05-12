@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
 import noProfile from "../../assets/noProfile.jpg";
-import { FaUser, FaSignOutAlt, FaBars, FaTimes } from "react-icons/fa";
-import { LuLayoutDashboard } from "react-icons/lu";
+import {  FaBars, FaTimes } from "react-icons/fa";
+import { User, LogOut, LayoutDashboard, Bell  } from 'lucide-react';
 
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 20px 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -176,8 +176,8 @@ const HamburgerButton = styled.button`
 const Sidebar = styled.div`
   position: fixed;
   top: 0;
-  left: ${({ $isOpen }) => ($isOpen ? '0' : '-381px')};
-  width: 300px;
+  left: ${({ $isOpen }) => ($isOpen ? '0' : '-1530px')};
+  width: 100%;
   height: 100vh;
   background-color: white;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
@@ -279,6 +279,8 @@ function Header() {
           </ul>
         </Nav>
         {user ? (
+          <div style={{display:"flex", alignItems:"center", gap:"1rem"}}>
+          <Bell size={35}/> 
           <ProfileContainer ref={dropdownRef}>
             <ProfileImage
               onClick={toggleDropdown}
@@ -291,20 +293,21 @@ function Header() {
                 <UserEmail>{user.email}</UserEmail>
               </UserInfo>
               <DropdownItem onClick={() => navigate('/profile')}>
-                <FaUser />
+              <User />
                 My Profile
               </DropdownItem>
               <DropdownItem onClick={() => navigate('/dashboard')}>
-                <LuLayoutDashboard />
+              <LayoutDashboard />
                 Dashboard
               </DropdownItem>
               <Divider />
               <DropdownItem onClick={handleLogout}>
-                <FaSignOutAlt />
+              <LogOut />
                 Logout
               </DropdownItem>
             </Dropdown>
           </ProfileContainer>
+          </div>
         ) : (
           <ButtonGroup>
             <Link to="/auth">

@@ -43,20 +43,7 @@ router.get('/courses', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-// GET /api/courses/:id - Get a specific course
-// router.get('/courses/:id', async (req, res) => {
-//   try {
-//     const course = await Course.findById(req.params.id);
-//     if (course) {
-//       res.json(course);
-//     } else {
-//       res.status(404).json({ message: 'Course not found' });
-//     }
-//   } catch (err) {
-//     console.log(err)
-//     res.status(500).json({ message: err.message });
-//   }
-// });
+
 
 router.get('/courses/:id', async (req, res) => {
   try {
@@ -88,59 +75,6 @@ module.exports = router;
 
 
 
-// GET /api/courses - Get all courses
-// router.get('/courses', async (req, res) => {
-//   try {
-//     const courses = await Course.find();
-//     res.json(courses);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// });
-
-
-
-
-
-
-
-
-
-// const express = require('express');
-// const router = express.Router();
-
-// router.get('/courses', (req, res) => {
-//   const { search } = req.query;
-
-//   if (search) {
-//     const lowerCaseSearch = search.toLowerCase();
-//     const regex = new RegExp(lowerCaseSearch, 'i'); // 'i' flag for case-insensitive search
-
-//     const filteredCourses = coursesContent.filter(course => 
-//       regex.test(course.title) ||
-//       regex.test(course.description) ||
-//       regex.test(course.tag)
-//     );
-
-//     res.json(filteredCourses);
-//   } else {
-//     res.json(coursesContent);
-//   }
-// });
-
-
-// router.get('/courses/:id', (req, res) => {
-//   const courseId = parseInt(req.params.id);
-//   const course = coursesContent.find(c => c.id === courseId);
-
-//   if (course) {
-//     res.json(course);
-//   } else {
-//     res.status(404).json({ message: 'Course not found' });
-//   }
-// });
-
-// module.exports = router;
 
 
 

@@ -155,12 +155,12 @@ function CourseDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEnrolled, setIsEnrolled] = useState(false);
 
- 
+ const API_URL = import.meta.env.VITE_API_URL
 
 
   const handleEnrollmentSuccess = () => {
     setIsEnrolled(true);
-    localStorage.setItem(`isEnrolled_${id}`, true);
+    // localStorage.setItem(`isEnrolled_${id}`, true);
   };
 
 
@@ -168,7 +168,7 @@ function CourseDetail() {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/courses/${id}`);
+        const response = await axios.get(`${API_URL}/courses/${id}`);
         setCourse(response.data);
       } catch (error) {
         console.error('Error fetching course details:', error);
@@ -176,10 +176,10 @@ function CourseDetail() {
     };
 
     fetchCourseDetails();
-    const enrolled = localStorage.getItem(`isEnrolled_${id}`);
-    if (enrolled) {
-      setIsEnrolled(true);
-    }
+    // const enrolled = localStorage.getItem(`isEnrolled_${id}`);
+    // if (enrolled) {
+    //   setIsEnrolled(true);
+    // }
   }, [id]);
 
 

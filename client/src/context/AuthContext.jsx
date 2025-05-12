@@ -8,13 +8,13 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   // const navigate = useNavigate()
-
+const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get('http://localhost:8000/api/user', {
+          const response = await axios.get(`${API_URL}/user`, {
             headers: { 'x-auth-token': token },
           });
           setUser(response.data);
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (token) => {
     localStorage.setItem('token', token);
     try {
-      const response = await axios.get('http://localhost:8000/api/user', {
+      const response = await axios.get(`${API_URL}/user`, {
         headers: { 'x-auth-token': token },
       });
       setUser(response.data);

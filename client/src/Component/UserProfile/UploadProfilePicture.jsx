@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
-import toast, { Toaster } from 'react-hot-toast';
+import {toast} from 'sonner';
 import { ClipLoader } from 'react-spinners';
 import { CiEdit } from "react-icons/ci";
 import noAvatar from "../../assets/noProfile.jpg"
@@ -76,7 +76,7 @@ const UploadProfilePicture = () => {
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const { user, setUser } = useAuth();
-
+  const API_URL = import.meta.env.VITE_API_URL
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
@@ -97,7 +97,7 @@ const UploadProfilePicture = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:8000/api/upload-profile-picture', formData, {
+      const res = await axios.post(`${API_URL}/upload-profile-picture`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': token,
@@ -118,7 +118,7 @@ const UploadProfilePicture = () => {
 
   return (
     <Container>
-      <Toaster />
+    
       <StyledForm onSubmit={handleSubmit}>
         <HiddenInput
           accept="image/*"

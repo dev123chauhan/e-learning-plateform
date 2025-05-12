@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-    <AppContainer>
+    <AppContainer className='curve'>
       <Header/>
       <Banner />
     </AppContainer>

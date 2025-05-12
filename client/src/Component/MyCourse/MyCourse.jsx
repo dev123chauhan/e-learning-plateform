@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Card, Dropdown,  Modal, message, Skeleton } from "antd";
+import { Card, Dropdown, Modal, Skeleton } from "antd";
 import { EllipsisOutlined } from "@ant-design/icons";
-
+import { toast } from "sonner";
 const { Meta } = Card;
 
 const CourseGrid = styled.div`
@@ -32,7 +32,7 @@ function MyCourses() {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+ const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
     fetchEnrolledCourses();
   }, []);
@@ -41,7 +41,7 @@ function MyCourses() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        "http://localhost:8000/api/enrolled-courses"
+        `${API_URL}/enrolled-courses`
       );
       setEnrolledCourses(response.data);
     } catch (error) {
@@ -61,13 +61,13 @@ function MyCourses() {
       onOk: async () => {
         try {
           await axios.delete(
-            `http://localhost:8000/api/enrolled-courses/${courseId}`
+            `${API_URL}/enrolled-courses/${courseId}`
           );
-          message.success("Course removed successfully");
+          toast.success("Course removed successfully");
           fetchEnrolledCourses(); // Refresh the course list
         } catch (error) {
           console.error("Error removing course:", error);
-          message.error("Failed to remove course. Please try again.");
+          toast.error.error("Failed to remove course. Please try again.");
         }
       },
     });
@@ -75,21 +75,23 @@ function MyCourses() {
 
   const getMenuItems = (courseId) => [
     {
-      key: '1',
-      label: 'Remove Course',
+      key: "1",
+      label: "Remove Course",
       onClick: () => handleRemoveCourse(courseId),
     },
   ];
 
   const renderSkeletons = () => {
-    return Array(4).fill().map((_, index) => (
-      <SkeletonCard key={index}>
-        <Skeleton.Image style={{ width: '230px', height: 150 }} active />
-        <Skeleton active>
-          <Meta title={" "} description={" "} />
-        </Skeleton>
-      </SkeletonCard>
-    ));
+    return Array(4)
+      .fill()
+      .map((_, index) => (
+        <SkeletonCard key={index}>
+          <Skeleton.Image style={{ width: "230px", height: 150 }} active />
+          <Skeleton active>
+            <Meta title={" "} description={" "} />
+          </Skeleton>
+        </SkeletonCard>
+      ));
   };
 
   if (isLoading) {
