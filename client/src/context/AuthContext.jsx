@@ -1,26 +1,30 @@
+
+
+
 import { createContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
+import { authService } from '../api/services/authService';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  // const navigate = useNavigate()
-const API_URL = import.meta.env.VITE_API_URL
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get(`${API_URL}/user`, {
-            headers: { 'x-auth-token': token },
-          });
-          setUser(response.data);
+          const data = await authService.getUser();
+          setUser(data);
         } catch (error) {
           console.error("Failed to fetch user", error);
+          localStorage.removeItem('token');
+        } finally {
+          setLoading(false);
         }
+      } else {
+        setLoading(false);
       }
     };
 
@@ -30,28 +34,29 @@ const API_URL = import.meta.env.VITE_API_URL
   const login = async (token) => {
     localStorage.setItem('token', token);
     try {
-      const response = await axios.get(`${API_URL}/user`, {
-        headers: { 'x-auth-token': token },
-      });
-      setUser(response.data);
+      const data = await authService.getUser();
+      setUser(data);
     } catch (error) {
       console.error("Failed to fetch user", error);
+      localStorage.removeItem('token');
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
-    // navigate("/auth")
+  const logout = async () => {
+    try {
+
+
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      localStorage.removeItem('token');
+      setUser(null);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };

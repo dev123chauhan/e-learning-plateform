@@ -33,8 +33,6 @@ const enrollmentSchema = new mongoose.Schema({
   }
 });
 
-// Remove the unique index on email and course
-
 const Enrollment = mongoose.model('Enrollment', enrollmentSchema);
 
 module.exports = Enrollment;

@@ -9,7 +9,6 @@ router.post('/', async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
-    // Create a new contact in the database
     const newContact = new Contact({
       name,
       email,
@@ -17,8 +16,6 @@ router.post('/', async (req, res) => {
     });
 
     const savedContact = await newContact.save();
-
-    // Set up the Nodemailer transporter
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
@@ -27,16 +24,15 @@ router.post('/', async (req, res) => {
       },
     });
 
-    // Configure the email options
+
     const mailOptions = {
-      from: `"${name}" <${email}>`, // Use the submitter's name and email
-      to: process.env.EMAIL_USER, // Your email address (admin's email)
-      replyTo: email, // Ensure replies go to the submitter
+      from: `"${name}" <${email}>`,
+      to: process.env.EMAIL_USER,
+      replyTo: email, 
       subject: 'New Contact Form Submission',
       text: `You have a new contact form submission from ${name} (${email}):\n\n${message}`,
     };
 
-    // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);

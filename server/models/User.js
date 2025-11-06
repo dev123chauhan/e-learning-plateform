@@ -5,14 +5,12 @@
       username: { type: String, required: true, unique: true, trim: true },
       password: { type: String, required: true },
       email: { type: String, required: true, unique: true },
-      profileImage: { type: String, default: "" }, // This will store the path to the uploaded image
+      profileImage: { type: String, default: "" }, 
       gender: { type: String, enum: ["Male", "Female", "Other"], default: "Male" },
       mobileNumber: { type: String, trim: true },
       dateOfBirth: { type: Date },
       address: { type: String, trim: true }, 
       date: { type: Date, default: Date.now },
-      // role: { type: String, required: true, enum: ['student', 'educator'] },
-      // courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
     },
     {
       timestamps: true,

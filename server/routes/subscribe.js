@@ -10,17 +10,17 @@ router.post('/', async (req, res) => {
   const { email } = req.body;
 
   try {
-    // Check if the email is already subscribed
+
     const existingSubscribe = await Subscribe.findOne({ email });
     if (existingSubscribe) {
       return res.status(400).json({ message: 'Email already subscribed' });
     }
 
-    // Create a new subscriber
+
     const newSubscribe = new Subscribe({ email });
     const savedSubscribe = await newSubscribe.save();
 
-    // Set up the Nodemailer transporter
+
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
       },
     });
 
-    // Configure the email options
+
     const mailOptions = {
       from: `<${email}>`,
       to: process.env.EMAIL_USER,
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
       text: `Thank you for subscribing to our newsletter!`,
     };
 
-    // Send the email
+
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully');
 
