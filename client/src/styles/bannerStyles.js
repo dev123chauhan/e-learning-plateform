@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const HeroContainer = styled.section`
   display: flex;
   flex-direction: column; 
@@ -10,10 +11,10 @@ export const HeroContainer = styled.section`
   overflow: hidden;
   padding: 20px; 
 
-
   @media (min-width: 1024px) {
     flex-direction: row; 
     padding: 50px 5%;
+    align-items: center;
   }
 `;
 
@@ -37,17 +38,17 @@ export const ImageArea = styled.div`
   position: relative;
   margin-bottom: 30px; 
   order: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (min-width: 1024px) {
     order: 2; 
     width: 50%;
     margin-bottom: 0;
+    min-height: 600px;
   }
 `;
-
-
-
-
 
 export const Subtitle = styled.p`
   font-size: 14px;
@@ -119,20 +120,20 @@ export const WatchButton = styled(Button)`
   }
 `;
 
-
-
 export const StudentImage = styled.img`
   width: 100%;
-  ${'' }
+  max-width: 400px;
   display: block;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 
   @media (min-width: 1024px) {
-    position: absolute;
-    right:100px;
-    bottom: -500px;
-    max-width: 600px;
-    width: 120%;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    right: 0;
+    bottom: 0;
   }
 `;
 
@@ -147,6 +148,7 @@ export const InfoCard = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  z-index: 10;
 
   @media (min-width: 768px) {
     padding: 10px 15px;
@@ -155,24 +157,35 @@ export const InfoCard = styled.div`
 `;
 
 export const AssistedStudentCard = styled(InfoCard)`
-  top: 40%;
-  left: 50%;
-  opacity: 0.7;
+  top: 20%;
+  left: 5%;
+
+  @media (min-width: 1024px) {
+    top: 30%;
+    left: 50%;
+  }
 `;
 
 export const UserExperienceCard = styled(InfoCard)`
-  bottom: 25%;
-  left: 50%;
+  bottom: 20%;
+  left: 5%;
   flex-direction: column;
   align-items: flex-start;
-  z-index: 1000;
-  opacity: 0.7;
+
+  @media (min-width: 1024px) {
+    bottom: 15%;
+    left: 45%;
+  }
 `;
 
 export const CongratulationsCard = styled(InfoCard)`
-  top: 40%;
+  top: 20%;
   right: 5%;
-  opacity: 0.7;
+
+  @media (min-width: 1024px) {
+    top: 30%;
+    right: 10%;
+  }
 `;
 
 export const JoinNowButton = styled.button`
@@ -186,18 +199,22 @@ export const JoinNowButton = styled.button`
   margin-top: 5px;
 `;
 
-
-
 export const StatsIcon = styled.img`
   position: absolute;
   top: 150px;
-  right: 200px;
-  width: 100px;
-  height: 100px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
+  z-index: 5;
 
   @media (min-width: 768px) {
     width: 100px;
     height: 100px;
+    right: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    right: 150px;
   }
 `;
 
@@ -221,13 +238,13 @@ export const OverlayImage = styled.img`
   width: 60%;
   height: 60%;
 `;
+
 export const Title = styled.h1`
   font-size: 28px;
   margin-bottom: 20px;
   
   span {
     color: #FF7A00;
-    ${'' }
   }
 
   @media (min-width: 768px) {

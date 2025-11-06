@@ -5,66 +5,100 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
 
 ::-webkit-scrollbar-thumb {
-  background: #49BBBD !important; 
+  background: #49bbbd !important;
   border-radius: 6px !important;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
-
-
 
 .container {
   max-width: 100%;
   margin: 0 auto;
+  padding: 0 15px;
+  overflow-x: hidden;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-
 .instagramIcon {
   color: orange;
 }
-.scrollToTop{
-  background-color: #49BBBD !important;
+
+.scrollToTop {
+  background-color: #49bbbd !important;
   border-radius: 50% !important;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.upArrow{
+.upArrow {
   color: white !important;
 }
 
-.react-datepicker{
+.react-datepicker {
   border: none !important;
   background-color: none !important;
 }
-.react-datepicker__header{
+
+.react-datepicker__header {
   background: none !important;
   border: none !important;
 }
+
 .curve {
   border-radius: 0 0 100% 100% / 0 0 30% 30% !important;
+  max-width: 100%;
 }
+
 [data-sonner-toast][data-type="success"] svg {
-  color: #49BBBD !important;
+  color: #49bbbd !important;
 }
+
 [data-sonner-toast][data-type="error"] svg {
   color: red !important;
+}
+
+.header,
+.footer,
+section,
+div {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.absolute,
+[style*="position: absolute"] {
+  max-width: 100%;
+}
+
+.flex,
+[style*="display: flex"] {
+  flex-wrap: wrap;
 }
