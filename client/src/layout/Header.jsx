@@ -28,7 +28,6 @@ import {
   UserEmail,
   UserInfo,
   UserName,
-  BellIcon,
 } from "../styles/headerStyles";
 import { useModal } from "../context/ModalContext";
 import Modal from "../common/Modal";
@@ -125,13 +124,7 @@ function Header() {
           </ul>
         </Nav>
         {user ? (
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <BellIcon
-              strokeWidth={1}
-              size={28}
-              $isHomePage={isHomePage}
-              $scrolled={scrolled}
-            />
+          <>
             <ProfileContainer ref={dropdownRef}>
               {user.profileImage ? (
                 <ProfileImage
@@ -162,7 +155,7 @@ function Header() {
                 </DropdownItem>
               </Dropdown>
             </ProfileContainer>
-          </div>
+          </>
         ) : (
           <ButtonGroup>
             <Link>

@@ -23,10 +23,8 @@ export default function LoginForm() {
       const data = await authService.login(email, password);
       login(data.token);
       toast.success('Successfully logged in!');
+      navigate('/');
       closeModal(); 
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
     } catch (error) {
       toast.error('Login failed. Please check your credentials.');
     } finally {

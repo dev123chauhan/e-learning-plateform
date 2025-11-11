@@ -7,7 +7,6 @@
 
 html,
 body {
-  overflow-x: hidden;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -38,7 +37,6 @@ svg {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 15px;
-  overflow-x: hidden;
 }
 
 a {
@@ -90,7 +88,6 @@ a {
 section,
 div {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 .absolute,
