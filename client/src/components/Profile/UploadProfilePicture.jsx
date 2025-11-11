@@ -1,6 +1,6 @@
 import noAvatar from "../../../public/assets/noProfile.jpg"
 import { useState } from 'react';
-import useAuth from "../../hooks/useAuth";
+import {useAuth} from "../../context/AuthContext";
 import { toast } from 'sonner';
 import { ClipLoader } from 'react-spinners';
 import { Button, Container, EditIcon, HiddenInput, IconButton, StyledAvatar, StyledForm, Subtitle, Title } from '../../styles/uploadProfilePictureStyles';

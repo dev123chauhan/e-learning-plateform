@@ -1,4 +1,3 @@
-import useAuth from "../../hooks/useAuth";
 import {
   FiGrid,
   FiFileText,
@@ -21,6 +20,7 @@ import Leaderboard from "./Leaderboard";
 import CourseType from "./CourseType";
 import { AppContainer, Header, LeaderBoard, Logo, MainContent, ProfileSection, SearchBar, Sidebar, SidebarItem, StatsContainer } from "../../styles/dashboardStyles";
 import Todo from "./Todo";
+import { useAuth } from "../../context/AuthContext";
 const styleBack ={
   display: "flex",
   alignItems:"center",

@@ -1,4 +1,4 @@
-import useAuth from "../../hooks/useAuth";
+import {useAuth} from "../../context/AuthContext";
 import noProfile from "../../../public/assets/noProfile.jpg";
 import {useNavigate} from "react-router-dom"
 import { FaUser, FaPencilAlt, FaImage, FaLock } from 'react-icons/fa';

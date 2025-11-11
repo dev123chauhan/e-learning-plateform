@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Skeleton } from 'antd';
 import noProfile from "../../../public/assets/noProfile.jpg";
-import useAuth from "../../hooks/useAuth";
+import {useAuth} from "../../context/AuthContext";
 import { IoMdTime } from "react-icons/io";
 import { RxDashboard } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import useAuth from "../../hooks/useAuth";
+import {useAuth} from "../../context/AuthContext";
 import { Container, Title, Subtitle, GridContainer, GridItem, InfoPaper, Label, Text } from "../../styles/userProfileStyles";
 
 const UserProfile = () => {

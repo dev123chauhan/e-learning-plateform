@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from 'sonner';
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import useAuth from "../../hooks/useAuth";
+import {useAuth} from "../../context/AuthContext";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { useModal } from "../../context/ModalContext";
 import { Button, CheckboxContainer, CheckboxInput, CheckboxLabel, CheckboxWrapper, ForgotPassword, Form, Input, InputLabel, InputWrapper, ShowPasswordIcon } from "../../styles/loginFormStyles";

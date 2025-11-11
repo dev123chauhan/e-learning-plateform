@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import {useAuth} from "../../context/AuthContext";
 import {toast} from 'sonner';
 import { ClipLoader } from "react-spinners";
 import { Button, Container, Form, Grid, GridItem, Input, Label, Title } from "../../styles/updateProfileStyles";

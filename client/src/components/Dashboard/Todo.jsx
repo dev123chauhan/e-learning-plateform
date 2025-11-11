@@ -2,7 +2,7 @@ import  { useState } from 'react';
 import { CheckSquare, Edit2 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import useAuth from '../../hooks/useAuth';
+import {useAuth} from '../../context/AuthContext';
 import noProfile from "../../../public/assets/noProfile.jpg";
 import { CalendarSection, Container, Name, ProfileHeader, ProfileImage, ProfileSection, ProfileTitle, Status, TodoItem, TodoSection, TodoSubtitle, TodoText, TodoTitle } from '../../styles/todoStyles';
 
