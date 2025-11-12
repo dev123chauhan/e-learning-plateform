@@ -1,5 +1,4 @@
 import {useAuth} from "../../context/AuthContext";
-import noProfile from "../../../public/assets/noProfile.jpg";
 import {useNavigate} from "react-router-dom"
 import { FaUser, FaPencilAlt, FaImage, FaLock } from 'react-icons/fa';
 import { SidebarContainer, ProfileSection, Avatar, Username, NavList, NavItem, Icon, Divider, LogoutButton } from "../../styles/profileTabStyles";
@@ -18,8 +17,6 @@ const ProfileTab = ({ activeTab, setActiveTab }) => {
         <Avatar
           src={
             user?.profileImage
-              ? `http://localhost:8000/uploads/${user.profileImage}`
-              : noProfile
           }
         />
         <Username>{user?.username || "User Name"}</Username>
@@ -31,7 +28,7 @@ const ProfileTab = ({ activeTab, setActiveTab }) => {
       key={tab}
       selected={activeTab === tab}
       onClick={() => setActiveTab(tab)}
-      style={{ display: "flex", alignItems: "center" }} // Ensure items are aligned
+      style={{ display: "flex", alignItems: "center" }} 
     >
       <Icon>
         {tab === "profile" ? <FaUser color="white"/> :

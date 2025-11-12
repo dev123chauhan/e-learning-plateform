@@ -70,7 +70,7 @@ export const Button = styled.button`
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 2rem;
   cursor: pointer;
   font-size: 1rem;
   align-self: flex-start;

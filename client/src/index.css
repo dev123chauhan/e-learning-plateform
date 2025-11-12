@@ -22,7 +22,6 @@ svg {
 
 ::-webkit-scrollbar-thumb {
   background: #49bbbd !important;
-  border-radius: 6px !important;
 }
 
 ::-webkit-scrollbar {
@@ -80,7 +79,7 @@ a {
 }
 
 [data-sonner-toast][data-type="error"] svg {
-  color: red !important;
+  color: #ff5858 !important;
 }
 
 .header,

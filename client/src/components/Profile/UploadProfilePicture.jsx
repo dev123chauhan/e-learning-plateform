@@ -15,6 +15,16 @@ const UploadProfilePicture = () => {
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
+      if (selectedFile.size > 10 * 1024 * 1024) {
+        toast.error('File size should be less than 10MB');
+        return;
+      }
+
+      if (!selectedFile.type.startsWith('image/')) {
+        toast.error('Please select an image file');
+        return;
+      }
+
       setFile(selectedFile);
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -38,15 +48,22 @@ const UploadProfilePicture = () => {
       const data = await profileService.uploadProfilePicture(file);
       setUser(data.user);
       
-      setTimeout(() => {
-        setLoading(false);
-        toast.success('Profile Uploaded Successfully');
-      }, 1000);
+      setFile(null);
+      setPreview(null);
+      
+      toast.success('Profile picture uploaded successfully');
+      setLoading(false);
     } catch (err) {
       console.error('Error Response:', err.response);
       toast.error(err.response?.data?.message || 'Failed to upload profile picture');
       setLoading(false);
     }
+  };
+
+  const getProfileImageUrl = () => {
+    if (preview) return preview;
+    if (user?.profileImage) return user.profileImage;
+    return noAvatar;
   };
 
   return (
@@ -61,9 +78,7 @@ const UploadProfilePicture = () => {
         <IconButton htmlFor="profile-image-upload">
           <StyledAvatar
             alt="Profile Picture"
-            src={preview || (user && user.profileImage) 
-              ? preview || `http://localhost:8000/uploads/${user.profileImage}` 
-              : noAvatar}
+            src={getProfileImageUrl()}
           />
           <EditIcon />
         </IconButton>
@@ -78,85 +93,3 @@ const UploadProfilePicture = () => {
 };
 
 export default UploadProfilePicture;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

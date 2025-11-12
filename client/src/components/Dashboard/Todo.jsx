@@ -3,7 +3,6 @@ import { CheckSquare, Edit2 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {useAuth} from '../../context/AuthContext';
-import noProfile from "../../../public/assets/noProfile.jpg";
 import { CalendarSection, Container, Name, ProfileHeader, ProfileImage, ProfileSection, ProfileTitle, Status, TodoItem, TodoSection, TodoSubtitle, TodoText, TodoTitle } from '../../styles/todoStyles';
 
 const Todo = () => {
@@ -18,11 +17,7 @@ const Todo = () => {
           <Edit2 size={18} />
         </ProfileHeader>
         <ProfileImage
-          src={
-            user?.profileImage
-              ? `http://localhost:8000/uploads/${user.profileImage}`
-              : noProfile
-          }
+          src={user?.profileImage}
           alt={user?.username || "Profile"}
         />
         <Name>{user?.username}</Name>

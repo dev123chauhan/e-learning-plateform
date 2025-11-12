@@ -36,7 +36,7 @@ const Classroom = () => {
         <Description>
           E-Learning school management software helps traditional and online schools manage scheduling, attendance, payments and virtual classrooms all in one secure cloud-based system.
         </Description>
-        <LearnMoreButton href="#">Learn more</LearnMoreButton>
+        <LearnMoreButton>Learn more</LearnMoreButton>
       </ContentSection>
       <ImageSection ref={imageSectionRef}>
         <Image src={classroom} alt="Classroom" />

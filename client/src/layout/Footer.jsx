@@ -1,23 +1,28 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import {toast} from "sonner";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 import { FooterContainer, Logo, LogoText, LogoDiamond, SubTitle, SubscribeText, SubscribeForm, EmailInput, Links, Copyright, SubscribeButton  } from "../styles/footerStyle";
+import { subscribeService } from "../api/services/subscribeService";
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !email.includes('@')) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:8000/api/subscribe", { email });
-      toast.success("Subscription successful!");
+      const response = await subscribeService.subscribe(email);
+      toast.success(response.message || "Subscription successful!");
       setEmail("");
     } catch (error) {
       console.error("Subscription failed:", error);
-      toast.error("Subscription failed. Please try again.");
+      const errorMessage = error.response?.data?.message || "Subscription failed. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -68,7 +73,6 @@ const Footer = () => {
       </Links>
 
       <Copyright>© All rights reserved designed by | Devesh Chauhan</Copyright>
-      <Toaster position="top-right" reverseOrder={false} />
     </FooterContainer>
   );
 };

@@ -113,7 +113,7 @@ export const Button = styled.button`
   width: 100%;
   padding: 0.75rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 2rem;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;

@@ -127,7 +127,7 @@ function Dashboard() {
         </LeaderBoard></>}
       </MainContent>
     
-      <Todo/>
+    <Todo/>
     </AppContainer>
   );
 }

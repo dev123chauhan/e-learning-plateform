@@ -2,10 +2,29 @@ import { useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { AiOutlineMail } from "react-icons/ai";
 import { ClipLoader } from "react-spinners";
-import toast, { Toaster } from "react-hot-toast";
+import { toast } from "sonner";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Button, ContactDetail, ContactDetailIcon, Container, GetTitle, GridContainer, GridItem, IconContainer, InputWrapper, Map, Paper, TextArea, TextField, Title } from "../styles/contactUsStyles";
+import {
+  Button,
+  ContactDetail,
+  ContactDetailIcon,
+  Container,
+  GetTitle,
+  GridContainer,
+  GridItem,
+  IconContainer,
+  InputWrapper,
+  Map,
+  Paper,
+  TextArea,
+  TextField,
+  Title,
+} from "../styles/contactUsStyles";
 import { contactService } from "../api/services/contactService";
+import { validateContactForm, getFieldError } from "../utils/validations";
+import Errors from "../components/Notification/Errors";
+import { getInputStyles } from "../utils/inputStyles";
+
 const ContactUs = () => {
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -15,22 +34,58 @@ const ContactUs = () => {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
+
   const { name, email, message } = formData;
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (touched[name]) {
+      const error = getFieldError(name, value);
+      setErrors({ ...errors, [name]: error });
+    }
+  };
+
+  const handleBlur = (fieldName) => {
+    setTouched({ ...touched, [fieldName]: true });
+    const error = getFieldError(fieldName, formData[fieldName]);
+    setErrors({ ...errors, [fieldName]: error });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setTouched({ name: true, email: true, message: true });
+
+    const validation = validateContactForm(name, email, message);
+
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      toast.error("Please fix the errors in the form");
+      return;
+    }
+
     setLoading(true);
     try {
-     await contactService.sendMessage(formData);
+      await contactService.sendMessage(formData);
       setFormData({
         name: "",
         email: "",
         message: "",
       });
+      setTouched({ name: false, email: false, message: false });
+      setErrors({ name: "", email: "", message: "" });
       toast.success("Thanks for contacting us!");
       setTimeout(() => {
         setLoading(false);
@@ -63,10 +118,16 @@ const ContactUs = () => {
                   value={name}
                   onChange={handleChange}
                   onFocus={() => setIsNameFocused(true)}
-                  onBlur={() => setIsNameFocused(false)}
-                 $hasIcon={isNameFocused}
+                  onBlur={() => {
+                    setIsNameFocused(false);
+                    handleBlur("name");
+                  }}
+                  $hasIcon={isNameFocused}
+                  style={getInputStyles(touched.name, errors.name)}
                 />
               </InputWrapper>
+              <Errors message={errors.name} show={touched.name} />
+
               <InputWrapper>
                 {isEmailFocused && (
                   <IconContainer>
@@ -80,17 +141,27 @@ const ContactUs = () => {
                   value={email}
                   onChange={handleChange}
                   onFocus={() => setIsEmailFocused(true)}
-                  onBlur={() => setIsEmailFocused(false)}
+                  onBlur={() => {
+                    setIsEmailFocused(false);
+                    handleBlur("email");
+                  }}
                   $hasIcon={isEmailFocused}
+                  style={getInputStyles(touched.email, errors.email)}
                 />
               </InputWrapper>
+              <Errors message={errors.email} show={touched.email} />
+
               <TextArea
                 placeholder="Message"
                 name="message"
                 value={message}
                 onChange={handleChange}
+                onBlur={() => handleBlur("message")}
+                style={getInputStyles(touched.message, errors.message)}
               />
-              <Button type="submit">
+              <Errors message={errors.message} show={touched.message} />
+
+              <Button type="submit" disabled={loading}>
                 {loading ? <ClipLoader size={20} color={"#fff"} /> : "SUBMIT"}
               </Button>
             </form>
@@ -120,7 +191,6 @@ const ContactUs = () => {
           </Paper>
         </GridItem>
       </GridContainer>
-      <Toaster position="top-right" reverseOrder={false} />
     </Container>
   );
 };

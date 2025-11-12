@@ -75,7 +75,7 @@ export const LearnMoreButton = styled.a`
   color: #333366;
   text-decoration: none;
   border: 2px solid #333366;
-  border-radius: 5px;
+  border-radius: 2rem;
   font-weight: bold;
   transition: all 0.3s ease;
 
